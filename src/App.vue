@@ -1,17 +1,27 @@
-<script setup>
-
+<script>
+import AppHeader from "./components/Header.vue";
+import AppFooter from "./components/Footer.vue";
+export default {
+  components: {
+    AppHeader,
+    AppFooter,
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-    <h1>Hello, Vue.js!</h1>
-  </header>
   <main>
-    
+    <header>
+      <div id="app">
+        <AppHeader />
+        <div class="container mt-3">
+          <router-view />
+        </div>
+      </div>
+    </header>
+    <footer>
+      <AppFooter />
+    </footer>
   </main>
 </template>
 
