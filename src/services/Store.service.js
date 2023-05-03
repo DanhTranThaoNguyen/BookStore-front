@@ -1,44 +1,50 @@
-import createApiClient from "@/api.service";
-
-class  BookService {
-    constructor (baseUr = "/v1/book") {
-        this.api = createApiClient(baseUr);
+import createApiClient from "./api.service";
+class AuthorService {
+  constructor(baseUrl = "/api/contacts") {
+    this.api = createApiClient(baseUrl);
+  }
+  async getAll() {
+    return (await this.api.get("/")).data;
+  }
+  async create(data) {
+    return (await this.api.post("/", data)).data;
+  }
+  async deleteAll() {
+    return (await this.api.delete("/")).data;
+  }
+  async get(id) {
+    return (await this.api.get(`/${id}`)).data;
+  }
+  async update(id, data) {
+    return (await this.api.put(`/${id}`, data)).data;
+  }
+  async delete(id) {
+    return (await this.api.delete(`/${id}`)).data;
+  }
+}
+class BookService {
+    constructor(baseUrl = "/api/contacts") {
+      this.api = createApiClient(baseUrl);
     }
-    async getAll(){
-        return (await this.api.get("/")).data;
+    async getAll() {
+      return (await this.api.get("/")).data;
+    }
+    async create(data) {
+      return (await this.api.post("/", data)).data;
+    }
+    async deleteAll() {
+      return (await this.api.delete("/")).data;
     }
     async get(id) {
-        return (await this.api.get(`/${id}`)).data;
-    }
-    async create(data){
-        return (await this.api.post("/", data)).data;
-    }
-    async delete(id) {
-        return (await this.api.delete(`/${id}`)).data;
+      return (await this.api.get(`/${id}`)).data;
     }
     async update(id, data) {
-        return (await this.api.put(`/${id}`, data)).data;
-    }
-};
-class  AuthourServive {
-    constructor (baseUr = "/v1/author") {
-        this.api = createApiClient(baseUr);
-    }
-    async getAll(){
-        return (await this.api.get("/")).data;
-    }
-    async get(id) {
-        return (await this.api.get(`/${id}`)).data;
-    }
-    async create(data){
-        return (await this.api.post("/", data)).data;
+      return (await this.api.put(`/${id}`, data)).data;
     }
     async delete(id) {
-        return (await this.api.delete(`/${id}`)).data;
+      return (await this.api.delete(`/${id}`)).data;
     }
-    async update(id, data) {
-        return (await this.api.put(`/${id}`, data)).data;
-    }
-};
-
-export default new {BookService, AuthourServive};
+  }
+export default new (AuthorService, BookService);
+// export default new {AuthorService, BookService};
+// export default new AuthorService();

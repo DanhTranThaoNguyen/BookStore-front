@@ -21,7 +21,7 @@
 <style scoped>
 
 .main__footer {
-    background-color: #212529;  
+    background-color: #343a40;  
     border-radius: 10px;
     display: flex;
     justify-content: center;
